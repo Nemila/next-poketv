@@ -3,11 +3,15 @@ import Anime from "../components/anime";
 import Search from "../components/search";
 
 const getPopAnimes = async () => {
-  const res = await fetch("https://api.consumet.org/meta/anilist/popular", {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data.results;
+  try {
+    const res = await fetch("https://api.consumet.org/meta/anilist/popular", {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const getTrendingAnimes = async () => {
